@@ -1,11 +1,14 @@
 import { faBars, faCircleUser, faX } from '@fortawesome/free-solid-svg-icons';
 import logo from '../../assets/logo-1.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../Authprovider/Authprovider';
 
 
 const Navbar = () => {
     const [clicked, setClicked] = useState(false)
+    const {user} = useContext(AuthContext)
+    console.log(user)
 
     const handleBars = () => {
         setClicked(!clicked)
@@ -31,7 +34,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="navbar">
+        <div className="navbar bg-[#F6711E]">
             <div className='navbar-start'>
                 <figure className='w-[180px]'><img className='w-full' src={logo} alt="company logo" /></figure>
             </div>
