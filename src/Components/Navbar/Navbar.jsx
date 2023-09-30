@@ -3,6 +3,7 @@ import logo from '../../assets/logo-1.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../Authprovider/Authprovider';
+import ActiveRoute from '../../Routes/ActiveRoute';
 
 
 const Navbar = () => {
@@ -16,9 +17,9 @@ const Navbar = () => {
 
     const optionLg =
         <>
-            <li><a>Home</a></li>
-            <li><a>Courses</a></li>
-            <li><a>Blog</a></li>
+            <ActiveRoute to={'/'}><a>Home</a></ActiveRoute>
+            <ActiveRoute to={'/courses'}><a>Courses</a></ActiveRoute>
+            <ActiveRoute to={'/blog'}><a>Blog</a></ActiveRoute>
         </>
     const optionSm =
         <>
@@ -39,7 +40,7 @@ const Navbar = () => {
                 <figure className='w-[180px]'><img className='w-full' src={logo} alt="company logo" /></figure>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu-horizontal px-1 gap-8">
                     {optionLg}
                 </ul>
             </div>
