@@ -6,6 +6,7 @@ import Others from "../Layout/Others";
 import SignIn from "../Pages/SignIn/SignIn";
 import SignUp from "../Pages/SignUp/SignUp";
 import Home from "../Pages/Home/Home/Home";
+import Details from "../Pages/Home/Details/Details";
 
   const router = createBrowserRouter([
     {
@@ -15,7 +16,12 @@ import Home from "../Pages/Home/Home/Home";
           {
             path: '/',
             element: <Home></Home>,
-            loader: () => fetch('/FackData.json')
+            loader: () => fetch('http://localhost:5000/courses')
+          },
+          {
+            path: '/details/:id',
+            element: <Details></Details>,
+            loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`)
           }
         ]
     },

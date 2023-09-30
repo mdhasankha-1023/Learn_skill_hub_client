@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Course = ({ course }) => {
-    const { id, Course_name, Course_pic, Instructor_name,
+    const { _id, Course_name, Course_pic, Instructor_name,
         Instructor_pic, Category, price, rating } = course;
     console.log(course)
 
@@ -19,7 +19,7 @@ const Course = ({ course }) => {
                 <h2 className="card-title">{Course_name}</h2>
                 <p>{price}</p>
                 <div className="card-actions justify-end">
-                    <Link to={`/details/${id}`}>
+                    <Link to={`/details/${_id}`}>
                         <button className="btn btn-primary">Details</button>
                     </Link>
 
