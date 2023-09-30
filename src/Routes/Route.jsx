@@ -9,6 +9,7 @@ import Home from "../Pages/Home/Home/Home";
 import Details from "../Pages/Home/Details/Details";
 import StudentDashboard from "../Layout/StudentDashboard";
 import UserHome from "../Pages/DashboardHome/userHome/userHome";
+import EnrolledCourses from "../Pages/DashboardHome/EnrolledCourses/EnrolledCourses";
 
   const router = createBrowserRouter([
     {
@@ -48,6 +49,11 @@ import UserHome from "../Pages/DashboardHome/userHome/userHome";
         {
           path: '/student-dashboard',
           element: <UserHome></UserHome>
+        },
+        {
+          path: '/student-dashboard/enrolled-courses',
+          element: <EnrolledCourses></EnrolledCourses>,
+          loader:() => fetch('http://localhost:5000/enrolled-courses')
         }
       ]
     }

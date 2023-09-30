@@ -26,9 +26,9 @@ const StudentDashboard = () => {
             <div className="w-full">
                 <ul className="menu p-4 w-full min-h-full bg-base-200 text-base-content">
                     {/* Sidebar content here */}
-                    <li><a>Home</a></li>
-                    <li><a>Enrolled Courses</a></li>
-                    <li><a>Favorite</a></li>
+                    <li><Link to={'/student-dashboard'}><a>Home</a></Link></li>            
+                    <li><Link to={'/student-dashboard/enrolled-courses'}><a>Enrolled Courses</a></Link></li>
+                    <li><Link to={'/student-dashboard'}><a>Favorite</a></Link></li>
                 </ul>
                 <ul className="menu p-4  w-full min-h-full bg-base-200 text-base-content">
                     {option}
