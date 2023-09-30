@@ -5,11 +5,19 @@ import Main from "../Layout/Main";
 import Others from "../Layout/Others";
 import SignIn from "../Pages/SignIn/SignIn";
 import SignUp from "../Pages/SignUp/SignUp";
+import Home from "../Pages/Home/Home/Home";
 
   const router = createBrowserRouter([
     {
         path: '/',
-        element: <Main></Main>
+        element: <Main></Main>,
+        children: [
+          {
+            path: '/',
+            element: <Home></Home>,
+            loader: () => fetch('/FackData.json')
+          }
+        ]
     },
     {
       path: '/',

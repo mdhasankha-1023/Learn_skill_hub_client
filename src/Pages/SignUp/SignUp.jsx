@@ -19,7 +19,7 @@ const SignUp = () => {
             const user = result.user;
             form.reset();
             navigate('/sign-in')
-            console.log(user)
+            // console.log(user)
         })
         .catch(error => console.log(error))
 

@@ -12,7 +12,7 @@ const SignIn = () => {
         GoogleSignUp()
             .then((result) => {
                 const user = result.user;
-                console.log(user)
+                // console.log(user)
             })
             .catch(error => console.log(error))
     }
@@ -20,7 +20,7 @@ const SignIn = () => {
         GithubSignIn()
             .then((result) => {
                 const user = result.user;
-                console.log(user)
+                // console.log(user)
             })
             .catch(error => console.log(error))
     }
@@ -37,7 +37,7 @@ const SignIn = () => {
             const user = result.user;
             form.reset();
             navigate('/')
-            console.log(user)
+            // console.log(user)
         })
         .catch(error => console.log(error))
     }
