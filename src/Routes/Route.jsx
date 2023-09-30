@@ -10,6 +10,8 @@ import Details from "../Pages/Home/Details/Details";
 import StudentDashboard from "../Layout/StudentDashboard";
 import UserHome from "../Pages/DashboardHome/userHome/userHome";
 import EnrolledCourses from "../Pages/DashboardHome/EnrolledCourses/EnrolledCourses";
+import InstructorDashboard from "../Layout/InstructorDashboard";
+import AddCourse from "../Pages/DashboardHome/AddCourse/AddCourse";
 
   const router = createBrowserRouter([
     {
@@ -54,6 +56,20 @@ import EnrolledCourses from "../Pages/DashboardHome/EnrolledCourses/EnrolledCour
           path: '/student-dashboard/enrolled-courses',
           element: <EnrolledCourses></EnrolledCourses>,
           loader:() => fetch('http://localhost:5000/enrolled-courses')
+        }
+      ]
+    },
+    {
+      path: '/instructor-dashboard',
+      element: <InstructorDashboard></InstructorDashboard>,
+      children: [
+        {
+          path: '/instructor-dashboard',
+          element: <UserHome></UserHome>
+        },
+        {
+          path: '/instructor-dashboard/addCourse',
+          element: <AddCourse></AddCourse>
         }
       ]
     }
