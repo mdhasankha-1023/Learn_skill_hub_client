@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState} from "react";
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import app from "../Firebase/Firebase";
+import Swal from "sweetalert2";
 
 export const AuthContext = createContext();
 
@@ -11,6 +12,17 @@ const GithubProvider = new GithubAuthProvider();
 const AuthProvider = ({children})=> {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+
+    // success massage
+    const successMsg = (msg) => {
+        Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: `${msg}`,
+            showConfirmButton: false,
+            timer: 1500
+          })
+    }
 
     // sign up with google
     const GoogleSignIn = () => {
@@ -43,6 +55,11 @@ const AuthProvider = ({children})=> {
         }
     }, [])
 
+    // signOut
+    const LogOut = () => {
+        return signOut(auth)
+    }
+
 
 
 
@@ -55,7 +72,9 @@ const AuthProvider = ({children})=> {
         GoogleSignUp: GoogleSignIn,
         GithubSignIn,
         signUp, 
-        signIn
+        signIn,
+        LogOut,
+        successMsg
     }
 
 

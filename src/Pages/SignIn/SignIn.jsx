@@ -12,6 +12,7 @@ const SignIn = () => {
         GoogleSignUp()
             .then((result) => {
                 const user = result.user;
+                navigate('/')
                 // console.log(user)
             })
             .catch(error => console.log(error))
@@ -20,6 +21,7 @@ const SignIn = () => {
         GithubSignIn()
             .then((result) => {
                 const user = result.user;
+                navigate('/')
                 // console.log(user)
             })
             .catch(error => console.log(error))

@@ -4,15 +4,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../Authprovider/Authprovider';
 import ActiveRoute from '../../Routes/ActiveRoute';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const Navbar = () => {
-    const [clicked, setClicked] = useState(false)
-    const {user} = useContext(AuthContext)
+    const [clicked, setClicked] = useState(false);
+    const { user, LogOut, successMsg } = useContext(AuthContext);
+    const navbar = useNavigate();
     console.log(user)
 
     const handleBars = () => {
         setClicked(!clicked)
+    }
+
+    // signOut
+    const signOutBtn = () => {
+        LogOut()
+        .then(() => {
+            successMsg('SignOut successful')
+            navbar('/sign-in')
+        })
+        .catch(error => console.log(error.message))
     }
 
     const optionLg =
@@ -26,8 +38,8 @@ const Navbar = () => {
             <li><a>Home</a></li>
             <li><a>Courses</a></li>
             <li><a>Blog</a></li>
-            <li><a>Sign in</a></li>
-            <li><a>Sign up</a></li>
+            <Link to={'/sign-in'}><a>Sign in</a></Link>
+            <Link to={'/sign-up'}><a>Sign up</a></Link>
             <li><a>
                 <FontAwesomeIcon icon={faCircleUser}></FontAwesomeIcon>
             </a></li>
@@ -45,12 +57,22 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
-                    <li><a>Sign in</a></li>
-                    <li><a>Sign up</a></li>
-                    <li><a>
-                        <FontAwesomeIcon icon={faCircleUser}></FontAwesomeIcon>
-                    </a></li>
+                <ul className="menu menu-horizontal px-1 items-center">
+                    {user ?
+                        <>
+                        <li onClick={signOutBtn}>SignOut</li>
+                        <li><a>
+                         <FontAwesomeIcon className='text-3xl' icon={faCircleUser}></FontAwesomeIcon>
+                        </a></li>
+                        </>
+                        :
+                        <>
+                        <Link to={'/sign-in'}><a>Sign in</a></Link>
+                        <Link to={'/sign-up'}><a>Sign up</a></Link>
+                        </>
+
+                    }
+
                 </ul>
             </div>
             <div className="navbar-end lg:hidden">
